@@ -1,9 +1,12 @@
 language: python
-
-python:
-  - "2.7"
-
+python: 2.7
+env:
+  - TOX_ENV=dj13
+  - TOX_ENV=dj14
+  - TOX_ENV=dj15
+  - TOX_ENV=dj16
+  - TOX_ENV=dj17b1
 install:
-  - pip install virtualenv
-
-script: python setup.py test
+  - pip install tox
+script:
+  - tox -e $TOX_ENV
