@@ -1,12 +1,12 @@
 language: python
 python: 2.7
 env:
-  - TOX_ENV=dj13
-  - TOX_ENV=dj14
-  - TOX_ENV=dj15
-  - TOX_ENV=dj16
-  - TOX_ENV=dj17b1
+  - TOXENV=dj13
+  - TOXENV=dj14
+  - TOXENV=dj15
+  - TOXENV=dj16
+  - TOXENV=dj17b1
 install:
   - pip install tox
 script:
-  - tox -e $TOX_ENV
+  - tox
