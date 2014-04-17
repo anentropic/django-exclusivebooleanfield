@@ -2,6 +2,12 @@ from django.db import models, transaction
 from django.db.models import Q
 
 
+try:
+    transaction_context = transaction.atomic
+except AttributeError:
+    transaction_context = transaction.commit_on_success
+
+
 class ExclusiveBooleanField(models.BooleanField):
     """
     Usage:
@@ -34,7 +40,7 @@ class ExclusiveBooleanField(models.BooleanField):
             def reducer(left, right):
                 return left & Q(**{right: getattr(self, right)})
 
-            with transaction.commit_on_success():
+            with transaction_context():
                 if getattr(self, field_name) is True:
                     f_args = reduce(reducer, on_fields, Q())
                     u_args = {field_name: False}

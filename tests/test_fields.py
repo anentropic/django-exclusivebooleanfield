@@ -56,3 +56,14 @@ def test_limited():
     models[2].save()
     assert LimitedModel.objects.filter(**filter_kwargs).count() == 1
     assert LimitedModel.objects.get(**filter_kwargs).pk == models[2].pk
+
+
+def test_atomic():
+    import django
+    from django.db import transaction
+    from exclusivebooleanfield.fields import transaction_context
+    # eg django.VERSION == (1, 4, 9, 'final', 0)
+    if django.VERSION[1] >= 6:
+        assert transaction_context == transaction.atomic
+    else:
+        assert transaction_context == transaction.commit_on_success
