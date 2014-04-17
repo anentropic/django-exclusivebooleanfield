@@ -1,4 +1,13 @@
 language: python
-python:
-  - "2.7"
-script: python setup.py test
+python: 2.7
+env:
+  - TOXENV=dj13
+  - TOXENV=dj14
+  - TOXENV=dj15
+  - TOXENV=dj16
+  - TOXENV=dj17b1
+install:
+  - pip install pytest-django>=1.7.1
+  - pip install .
+script:
+  - tox
