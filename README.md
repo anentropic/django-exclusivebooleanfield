@@ -7,6 +7,8 @@ Provides an `ExclusiveBooleanField` which is a boolean (db) field where only one
 
 Usage:
 ```python
+from django.db import models
+
 from exclusivebooleanfield.fields import ExclusiveBooleanField
 
 
