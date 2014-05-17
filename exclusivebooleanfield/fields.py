@@ -24,6 +24,8 @@ class ExclusiveBooleanField(models.BooleanField):
         # is only exclusive for rows with same value of the on fields
     """
     def __init__(self, on=None, *args, **kwargs):
+        if isinstance(on, basestring):
+            on = (on, )
         self._on_fields = on or ()
         super(ExclusiveBooleanField, self).__init__(*args, **kwargs)
 

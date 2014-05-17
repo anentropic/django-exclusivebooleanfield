@@ -18,7 +18,7 @@ class Tox(TestCommand):
 
 setup(
     name='django-exclusivebooleanfield',
-    version='0.1.2',
+    version='0.1.3',
     packages=[
         'exclusivebooleanfield',
     ],

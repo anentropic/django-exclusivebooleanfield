@@ -17,6 +17,12 @@ class MyModel(models.Model):
     the_one = ExclusiveBooleanField(on=('field_1', 'field_2'))
     # `on` is a bit like a unique constraint, value of field
     # is only exclusive for rows with same value of the on fields
+
+
+class MyOtherModel(models.Model):
+    field_1 = CharField()
+    the_one = ExclusiveBooleanField(on='field_1')
+    # if `on` is just a single field you don't have to wrap in a tuple
 ```
 
 Tested on Django 1.3 thru 1.7, to run tests checkout the project and `python setup.py test`

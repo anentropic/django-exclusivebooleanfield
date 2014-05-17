@@ -1,6 +1,8 @@
 import pytest
 
-from testapp.models import UnlimitedModel, LimitedModel, RelatedModel
+from testapp.models import (
+    UnlimitedModel, LimitedModel, RelatedModel, ShorthandModel
+)
 
 
 @pytest.mark.django_db
@@ -56,6 +58,36 @@ def test_limited():
     models[2].save()
     assert LimitedModel.objects.filter(**filter_kwargs).count() == 1
     assert LimitedModel.objects.get(**filter_kwargs).pk == models[2].pk
+
+
+@pytest.mark.django_db
+def test_shorthand():
+    ShorthandModel.objects.create(value=2, the_one=True)
+    models = [
+        ShorthandModel.objects.create(value=1)
+        for i in range(3)
+    ]
+    filter_kwargs = {
+        'the_one': True,
+        'value': 1,
+    }
+    assert ShorthandModel.objects.count() == 4
+    assert ShorthandModel.objects.filter(**filter_kwargs).count() == 0
+
+    models[0].the_one = True
+    models[0].save()
+    assert ShorthandModel.objects.filter(**filter_kwargs).count() == 1
+    assert ShorthandModel.objects.get(**filter_kwargs).pk == models[0].pk
+
+    models[1].the_one = True
+    models[1].save()
+    assert ShorthandModel.objects.filter(**filter_kwargs).count() == 1
+    assert ShorthandModel.objects.get(**filter_kwargs).pk == models[1].pk
+
+    models[2].the_one = True
+    models[2].save()
+    assert ShorthandModel.objects.filter(**filter_kwargs).count() == 1
+    assert ShorthandModel.objects.get(**filter_kwargs).pk == models[2].pk
 
 
 def test_atomic():
