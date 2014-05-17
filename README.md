@@ -3,10 +3,15 @@ django-exclusivebooleanfield
 
 [![Build Status](https://travis-ci.org/anentropic/django-exclusivebooleanfield.svg?branch=master)](https://travis-ci.org/anentropic/django-exclusivebooleanfield)
 
-Provides an `ExcluveBooleanField` which is a boolean (db) field where only one row in the table (or optionally, a subset of table based on value of other fields) is `True` and all the other rows are `False.
+Provides an `ExclusiveBooleanField` which is a boolean (db) field where only one row in the table (or optionally, a subset of table based on value of other fields) is `True` and all the other rows are `False`.
 
 Usage:
 ```python
+from django.db import models
+
+from exclusivebooleanfield.fields import ExclusiveBooleanField
+
+
 class MyModel(models.Model):
     the_one = ExclusiveBooleanField()
 
