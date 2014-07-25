@@ -18,7 +18,24 @@ class Tox(TestCommand):
 
 setup(
     name='django-exclusivebooleanfield',
-    version='0.1.3',
+    description="Provides an `ExcluveBooleanField` which is a boolean (db) "
+                "field where only one row in the table (or optionally, a "
+                "subset of table based on value of other fields) is `True` "
+                "and all the other rows are `False.",
+    version='0.1.4',
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Web Environment',
+        'Framework :: Django :: 1.3',
+        'Framework :: Django :: 1.4',
+        'Framework :: Django :: 1.5',
+        'Framework :: Django :: 1.6',
+        'Framework :: Django :: 1.7',
+        'Intended Audience :: Developers',
+        'Programming Language :: Python',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
+    ],
     packages=[
         'exclusivebooleanfield',
     ],
@@ -31,5 +48,5 @@ setup(
         'tox>=1.7.1',
         'pytest-django>=1.7.1',
     ],
-    cmdclass = {'test': Tox},
+    cmdclass={'test': Tox},
 )
