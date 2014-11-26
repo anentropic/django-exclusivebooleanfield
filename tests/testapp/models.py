@@ -6,6 +6,10 @@ from exclusivebooleanfield.fields import ExclusiveBooleanField
 class UnlimitedModel(models.Model):
     the_one = ExclusiveBooleanField(default=False)
 
+    def save(self, *args, **kwargs):
+        super(UnlimitedModel, self).save(*args, **kwargs)
+        self.overridden_save = True
+
 
 class RelatedModel(models.Model):
     pass

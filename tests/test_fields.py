@@ -15,6 +15,7 @@ def test_unlimited():
     models[0].save()
     assert UnlimitedModel.objects.filter(the_one=True).count() == 1
     assert UnlimitedModel.objects.get(the_one=True).pk == models[0].pk
+    assert models[0].overridden_save is True
 
     models[1].the_one = True
     models[1].save()
@@ -73,21 +74,25 @@ def test_shorthand():
     }
     assert ShorthandModel.objects.count() == 4
     assert ShorthandModel.objects.filter(**filter_kwargs).count() == 0
+    assert ShorthandModel.objects.filter(value=2, the_one=True).count() == 1
 
     models[0].the_one = True
     models[0].save()
     assert ShorthandModel.objects.filter(**filter_kwargs).count() == 1
     assert ShorthandModel.objects.get(**filter_kwargs).pk == models[0].pk
+    assert ShorthandModel.objects.filter(value=2, the_one=True).count() == 1
 
     models[1].the_one = True
     models[1].save()
     assert ShorthandModel.objects.filter(**filter_kwargs).count() == 1
     assert ShorthandModel.objects.get(**filter_kwargs).pk == models[1].pk
+    assert ShorthandModel.objects.filter(value=2, the_one=True).count() == 1
 
     models[2].the_one = True
     models[2].save()
     assert ShorthandModel.objects.filter(**filter_kwargs).count() == 1
     assert ShorthandModel.objects.get(**filter_kwargs).pk == models[2].pk
+    assert ShorthandModel.objects.filter(value=2, the_one=True).count() == 1
 
 
 def test_atomic():
