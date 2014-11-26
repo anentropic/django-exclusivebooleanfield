@@ -33,6 +33,12 @@ class ExclusiveBooleanField(models.BooleanField):
         super(ExclusiveBooleanField, self).contribute_to_class(cls, name)
         models.signals.class_prepared.connect(self._replace_save, sender=cls)
 
+    def deconstruct(self):
+        name, path, args, kwargs = super(ExclusiveBooleanField, self).deconstruct()
+        if self._on_fields:
+            kwargs['on'] = self._on_fields
+        return name, path, args, kwargs
+
     def _replace_save(self, sender, **kwargs):
         old_save = sender.save
         field_name = self.name

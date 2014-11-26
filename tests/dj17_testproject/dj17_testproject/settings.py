@@ -1,5 +1,5 @@
 """
-Django settings for dj17b1_testproject project.
+Django settings for dj17_testproject project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
@@ -39,6 +39,10 @@ INSTALLED_APPS = (
     'testapp',
 )
 
+MIGRATION_MODULES = {
+    'testapp': 'testapp.django_migrations',
+}
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,9 +52,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'dj17b1_testproject.urls'
+ROOT_URLCONF = 'dj17_testproject.urls'
 
-WSGI_APPLICATION = 'dj17b1_testproject.wsgi.application'
+WSGI_APPLICATION = 'dj17_testproject.wsgi.application'
 
 
 # Database
