@@ -15,6 +15,7 @@ def test_unlimited():
     models[0].save()
     assert UnlimitedModel.objects.filter(the_one=True).count() == 1
     assert UnlimitedModel.objects.get(the_one=True).pk == models[0].pk
+    assert models[0].overridden_save is True
 
     models[1].the_one = True
     models[1].save()
