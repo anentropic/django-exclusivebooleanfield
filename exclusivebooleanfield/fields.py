@@ -34,6 +34,10 @@ class ExclusiveBooleanField(models.BooleanField):
         models.signals.class_prepared.connect(self._replace_save, sender=cls)
 
     def deconstruct(self):
+        """
+        to support Django 1.7 migrations, see also the add_introspection_rules
+        section at bottom of this file for South + earlier Django versions
+        """
         name, path, args, kwargs = super(ExclusiveBooleanField, self).deconstruct()
         if self._on_fields:
             kwargs['on'] = self._on_fields
@@ -62,7 +66,13 @@ class ExclusiveBooleanField(models.BooleanField):
 try:
     from south.modelsinspector import add_introspection_rules
     add_introspection_rules(
-        rules=[],
+        rules=[
+            (
+                (ExclusiveBooleanField,),
+                [],
+                {"on": ["_on_fields", {"default": tuple()}]},
+            )
+        ],
         patterns=[
             'exclusivebooleanfield\.fields\.ExclusiveBooleanField',
         ]

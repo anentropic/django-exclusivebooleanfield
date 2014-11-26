@@ -50,6 +50,7 @@ coverage.xml
 *.log
 *.pot
 *.sqlite3
+*.db
 
 # Sphinx documentation
 docs/_build/
