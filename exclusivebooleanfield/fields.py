@@ -1,5 +1,6 @@
 from django.db import models, transaction
 from django.db.models import Q
+from django.utils.six import string_types
 
 
 try:
@@ -24,7 +25,7 @@ class ExclusiveBooleanField(models.BooleanField):
         # is only exclusive for rows with same value of the on fields
     """
     def __init__(self, on=None, *args, **kwargs):
-        if isinstance(on, basestring):
+        if isinstance(on, string_types):
             on = (on, )
         self._on_fields = on or ()
         super(ExclusiveBooleanField, self).__init__(*args, **kwargs)
