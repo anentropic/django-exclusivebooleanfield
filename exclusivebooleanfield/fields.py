@@ -1,6 +1,7 @@
 from django.db import models, transaction
 from django.db.models import Q
 from django.utils.six import string_types
+from django.utils.six.moves import reduce
 
 
 try:
