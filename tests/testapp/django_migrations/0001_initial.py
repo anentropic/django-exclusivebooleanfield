@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('value', models.IntegerField(null=True)),
-                ('the_one', exclusivebooleanfield.fields.ExclusiveBooleanField(default=False, on=(b'related', b'value'))),
+                ('the_one', exclusivebooleanfield.fields.ExclusiveBooleanField(default=False, on=('related', 'value'))),
             ],
             options={
             },
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('value', models.IntegerField(null=True)),
-                ('the_one', exclusivebooleanfield.fields.ExclusiveBooleanField(default=False, on=(b'value',))),
+                ('the_one', exclusivebooleanfield.fields.ExclusiveBooleanField(default=False, on=('value',))),
             ],
             options={
             },
