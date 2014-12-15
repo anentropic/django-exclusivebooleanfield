@@ -40,6 +40,9 @@ setup(
     packages=[
         'exclusivebooleanfield',
     ],
+    install_requires=[
+        'six>=1.8.0'
+    ]
     license='MIT',
     long_description=open('pypi.rst').read(),
     author="Anentropic",
