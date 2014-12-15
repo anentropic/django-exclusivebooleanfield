@@ -1,11 +1,19 @@
 language: python
 python: 2.7
 env:
-  - TOXENV=dj13
-  - TOXENV=dj14
-  - TOXENV=dj15
-  - TOXENV=dj16
-  - TOXENV=dj17
+  - TOXENV=py26-dj13
+  - TOXENV=py26-dj14
+  - TOXENV=py26-dj15
+  - TOXENV=py26-dj16
+  - TOXENV=py26-dj17
+  - TOXENV=py27-dj13
+  - TOXENV=py27-dj14
+  - TOXENV=py27-dj15
+  - TOXENV=py27-dj16
+  - TOXENV=py27-dj17
+  - TOXENV=py34-dj15
+  - TOXENV=py34-dj16
+  - TOXENV=py34-dj17
 install:
   - pip install pytest-django>=1.7.1
   - pip install tox
