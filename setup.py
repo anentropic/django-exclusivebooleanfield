@@ -22,16 +22,16 @@ setup(
                 "field where only one row in the table (or optionally, a "
                 "subset of table based on value of other fields) is `True` "
                 "and all the other rows are `False.",
-    version='0.2.0',
+    version='0.3.0',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Framework :: Django',
-        #'Framework :: Django :: 1.3',
-        #'Framework :: Django :: 1.4',
-        #'Framework :: Django :: 1.5',
-        #'Framework :: Django :: 1.6',
-        #'Framework :: Django :: 1.7',
+        # 'Framework :: Django :: 1.3',
+        # 'Framework :: Django :: 1.4',
+        # 'Framework :: Django :: 1.5',
+        # 'Framework :: Django :: 1.6',
+        # 'Framework :: Django :: 1.7',
         'Intended Audience :: Developers',
         'Programming Language :: Python',
         'License :: OSI Approved :: MIT License',
@@ -39,6 +39,9 @@ setup(
     ],
     packages=[
         'exclusivebooleanfield',
+    ],
+    install_requires=[
+        'six>=1.8.0'
     ],
     license='MIT',
     long_description=open('pypi.rst').read(),

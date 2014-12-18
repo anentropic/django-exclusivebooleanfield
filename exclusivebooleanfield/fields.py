@@ -1,6 +1,9 @@
 from django.db import models, transaction
 from django.db.models import Q
 
+from six import string_types
+from six.moves import reduce
+
 
 try:
     transaction_context = transaction.atomic
@@ -24,7 +27,7 @@ class ExclusiveBooleanField(models.BooleanField):
         # is only exclusive for rows with same value of the on fields
     """
     def __init__(self, on=None, *args, **kwargs):
-        if isinstance(on, basestring):
+        if isinstance(on, string_types):
             on = (on, )
         self._on_fields = on or ()
         super(ExclusiveBooleanField, self).__init__(*args, **kwargs)
@@ -38,7 +41,8 @@ class ExclusiveBooleanField(models.BooleanField):
         to support Django 1.7 migrations, see also the add_introspection_rules
         section at bottom of this file for South + earlier Django versions
         """
-        name, path, args, kwargs = super(ExclusiveBooleanField, self).deconstruct()
+        name, path, args, kwargs = super(
+            ExclusiveBooleanField, self).deconstruct()
         if self._on_fields:
             kwargs['on'] = self._on_fields
         return name, path, args, kwargs
