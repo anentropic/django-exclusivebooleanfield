@@ -51,7 +51,7 @@ setup(
     url="https://github.com/anentropic/django-exclusivebooleanfield",
     tests_require=[
         'tox>=1.7.1',
-        'pytest-django>=1.7.1',
+        'pytest-django>=2.8.0',
     ],
     cmdclass={'test': Tox},
 )
