@@ -1,8 +1,8 @@
 django-exclusivebooleanfield
 ============================
 
-![Build Status](https://travis-ci.org/anentropic/django-exclusivebooleanfield.svg?branch=master)](https://travis-ci.org/anentropic/django-exclusivebooleanfield)
-![Latest PyPI version](https://badge.fury.io/py/django-exclusivebooleanfield.svg)](https://pypi.python.org/pypi/django-conditional-aggregates/)  
+[![Build Status](https://travis-ci.org/anentropic/django-exclusivebooleanfield.svg?branch=master)](https://travis-ci.org/anentropic/django-exclusivebooleanfield)
+[![Latest PyPI version](https://badge.fury.io/py/django-exclusivebooleanfield.svg)](https://pypi.python.org/pypi/django-conditional-aggregates/)  
 ![Tested for: Python 2.6](https://img.shields.io/badge/Python%202.6--brightgreen.svg)
 ![Tested for: Python 2.7](https://img.shields.io/badge/Python%202.7--brightgreen.svg)
 ![Tested for: Python 3.4](https://img.shields.io/badge/Python%203.4--brightgreen.svg)  
