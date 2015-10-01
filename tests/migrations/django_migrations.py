@@ -13,7 +13,11 @@ def apply_django_migration(migration_cls, migration_name='9999',
     for parent in migration.dependencies:
         executor.loader.graph.add_dependency(migration, key, parent)
 
-    executor.apply_migration(migration)
+    try:
+        executor.apply_migration(migration)
+    except TypeError:
+        state = executor.loader.project_state(parent)
+        executor.apply_migration(state, migration)
     return executor
 
 

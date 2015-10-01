@@ -10,11 +10,13 @@ env:
   - TOXENV=py27-dj15
   - TOXENV=py27-dj16
   - TOXENV=py27-dj17
+  - TOXENV=py27-dj18
   - TOXENV=py34-dj15
   - TOXENV=py34-dj16
   - TOXENV=py34-dj17
+  - TOXENV=py34-dj18
 install:
-  - pip install pytest-django>=1.7.1
+  - pip install pytest-django>=2.8.0
   - pip install tox
   - pip install .
 script:
